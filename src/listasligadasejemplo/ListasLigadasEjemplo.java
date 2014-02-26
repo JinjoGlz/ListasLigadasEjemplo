@@ -17,14 +17,23 @@ public class ListasLigadasEjemplo {
      */
     public static void main(String[] args) {
         ListaLigada<Integer> lista=new ListaLigada<>();
+        
         lista.insertarInicio(3);
         lista.insertarInicio(2);
-        lista.insertarInicio(1);
+        lista.insertarInicio(3);
+        lista.insertarInicio(4);
+        lista.insertarInicio(5);
+        lista.insertarInicio(6);
+        lista.insertarInicio(4);
+        lista.insertarInicio(8);
         lista.mostrar();
         System.out.println("-------------------------------------------------------------");
-        lista.insertarAntesde(2, 6);
-        lista.mostrar();
+        ListaLigada<Integer> lista2=lista.intercalar(2);
+        lista2.mostrar();
+        
     }
+    
+    
     
     
 }

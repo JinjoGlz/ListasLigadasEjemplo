@@ -44,12 +44,13 @@ public class ListaLigada<T> {
         Nodo<T> aux=inicio;
         Nodo<T> aux2=inicio.getLiga().getLiga();
         int cont=1;
+        if(index==0){borrarInicio();}else{
         while(cont !=index){
                 aux=aux.getLiga();
                 aux2=aux2.getLiga();
                 cont++;
             }
-        aux.setLiga(aux2);
+        aux.setLiga(aux2);}
     }
     
     public void borrarInicio(){
@@ -117,5 +118,95 @@ public class ListaLigada<T> {
                 nodo.setLiga(actual);
             
     }
+    }
+    
+    
+    
+    public ListaLigada<T> dividir(int opcion){
+        ListaLigada<T> lista= new ListaLigada<>();
+        int elementos=1;
+        Nodo<T> aux=inicio;
+        while (aux.getLiga()!=null){
+            elementos++;
+            aux=aux.getLiga();        
+        }
+        elementos=(elementos % 2)==0?elementos/2:elementos/2+1;
+        aux=inicio;
+        int i=1;
+        if(opcion==1){
+            while(i<=elementos){
+                lista.insertarFinal(aux.getInfo());
+                aux=aux.getLiga();
+                i++;
+            }
+        }else{
+            while (aux!=null){
+             if(i>elementos){
+                 lista.insertarFinal(aux.getInfo());
+             }       
+             aux=aux.getLiga();
+             i++;
+        }
+        }
+        return lista;
+    }
+    
+    public void quitarDuplicados(){
+        Nodo<T> aux=inicio;
+        Nodo<T> aux2=null;
+        T dato=null;
+        while(aux.getLiga()!=null){
+            dato=aux.getInfo();
+            aux2=inicio;
+            int indice=0;
+            boolean duplicado=false;
+            while(aux2!=null){
+                if(dato.equals(aux2.getInfo())){
+                    if(!duplicado){
+                        duplicado=true;
+                        aux2=aux2.getLiga();
+                        indice++;
+                    }else{
+                        aux2=aux2.getLiga();
+                        borrar(indice);
+                        indice++;
+                    }
+                }else{
+                    indice++;
+                    aux2=aux2.getLiga();
+                }
+            }aux=aux.getLiga();
+        }
+    }
+    
+    public void ordenar(char direccion){
+        T aux=null;
+        Nodo<T> nodoActual=inicio;
+        Nodo<T> aux2=null;
+        
+        while(nodoActual.getLiga()!=null){
+            aux2=nodoActual.getLiga();
+            while(aux!=null){
+                
+            }
+        }
+    }
+    
+    public ListaLigada<T> intercalar(int mitad){
+        ListaLigada<T> lista= new ListaLigada<>();
+        boolean agregar=mitad==1?true:false;
+        Nodo<T> aux= inicio;
+        while(aux!=null){
+            if(agregar){
+                lista.insertarFinal(aux.getInfo());
+                aux=aux.getLiga();
+                agregar=false;
+            }else{
+                aux=aux.getLiga();
+                agregar=true;
+            }
+        }
+        
+        return lista;
     }
 }
